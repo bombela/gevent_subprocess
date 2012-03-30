@@ -32,8 +32,8 @@ setup(
     author_email = 'bombela@gmail.com',
     url          = 'https://github.com/bombela/gevent_subprocess',
     license      = 'MIT',
-    package_dir  = {'gevent_subprocess': '.'},
-    packages     = ['gevent_subprocess'],
+    package_dir  = {'gevent-subprocess': '.'},
+    packages     = ['gevent-subprocess'],
     zip_safe     = False,
     install_requires=[
         'gevent',
