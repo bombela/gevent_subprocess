@@ -22,4 +22,4 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import gevent_subprocess as subprocess
+from .gevent_subprocess import *

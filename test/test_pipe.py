@@ -23,7 +23,7 @@
 # SOFTWARE.
 
 from gevent.pool import Pool
-from gevent_subprocess import subprocess
+import gevent_subprocess as subprocess
 from gevent.queue import Queue
 import gevent
 import os

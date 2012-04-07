@@ -22,7 +22,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from gevent_subprocess import subprocess
+import gevent_subprocess as subprocess
 from nose.tools import assert_raises
 
 def test_call():
