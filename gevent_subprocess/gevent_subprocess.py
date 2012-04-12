@@ -69,7 +69,7 @@ class Pipe(object):
                 data = data[bytes_written:]
             except OSError as e:
                 if e.errno == errno.EPIPE:
-                    self._closed = True
+                    self.close()
                     raise IOError(e)
                 if e.errno != errno.EAGAIN:
                     raise
@@ -86,7 +86,7 @@ class Pipe(object):
                 buffer = os.read(self._fd, size if size > 0 else 64 * 1024)
                 bytes_read = len(buffer)
                 if bytes_read == 0:
-                    self._closed = True
+                    self.close()
                     break
                 if size > 0:
                     size -= bytes_read
