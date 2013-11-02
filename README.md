@@ -1,9 +1,12 @@
+Disclaimer
+========
+
+This is useful only with gevent \<1.0
+gevent >= 1.0 ships with its own suprocess implementation.
+
+Usage
+=====
+
 import gevent_subprocess as subprocess
 
-Now you can use subprocess as usual, its fully gevent compliant and asynchronous :)
-
-note:
-
-This is useful only with gevent \<1.0 (as I am writing this, on pypi you will
-find gevent 0.13b something like that). The future release of gevent >=1.0, currently
-in release candidate will include a subprocess adapation.
+Now you can use the same python subprocess API that you are accustomed with, with the joy of transparently non-blocking I/O.
