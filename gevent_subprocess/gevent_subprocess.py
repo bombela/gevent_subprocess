@@ -191,16 +191,32 @@ class _PopenWithAsyncPipe(_subprocess.Popen):
         # are None when not using PIPEs. The child objects are None
         # when not redirecting.
 
-        (p2cread, p2cwrite,
-         c2pread, c2pwrite,
-         errread, errwrite) = self._get_handles(stdin, stdout, stderr)
+        handles = self._get_handles(stdin, stdout, stderr)
+        to_close = None
+
+        if len(handles) == 2:
+            (p2cread, p2cwrite,
+             c2pread, c2pwrite,
+             errread, errwrite), to_close = handles
+        else:
+            (p2cread, p2cwrite,
+             c2pread, c2pwrite,
+             errread, errwrite) = handles
+
+        exec_kwargs = {
+            "p2cread": p2cread,
+            "p2cwrite": p2cwrite,
+            "c2pread": c2pread,
+            "c2pwrite": c2pwrite,
+            "errread": errread,
+            "errwrite": errwrite,
+        }
+        if to_close is not None:
+            exec_kwargs["to_close"] = to_close
 
         self._execute_child(args, executable, preexec_fn, close_fds,
                             cwd, env, universal_newlines,
-                            startupinfo, creationflags, shell,
-                            p2cread, p2cwrite,
-                            c2pread, c2pwrite,
-                            errread, errwrite)
+                            startupinfo, creationflags, shell, **exec_kwargs)
 
         if _subprocess.mswindows:
             if p2cwrite is not None:
