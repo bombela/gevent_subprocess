@@ -26,7 +26,7 @@ from setuptools import setup
 
 setup(
     name         = 'gevent_subprocess',
-    version      = '0.1.1',
+    version      = '0.1.2',
     description  = 'gevent adapter for the standard python subprocess',
     author       = 'François-Xavier Bourlet <bombela@gmail.com>',
     author_email = 'bombela@gmail.com',
